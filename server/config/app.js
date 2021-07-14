@@ -1,20 +1,30 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('../routes/index');
-var usersRouter = require('../routes/users');
+// database setup
+let mongoose = require('mongoose');
+let DB = require('./db');
 
-var app = express();
+// point mongoose to the DB URI
+mongoose.connect(DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
+let mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
+mongoDB.once('open', ()=>{
+  console.log('The program connected to MongoDB successfully...');
+});
+
+const indexRouter = require('../routes/index');
+const usersRouter = require('../routes/users');
+const app = express();
+
 
 // view engine setup
 //This section should be remove after project start
-app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'jade');
-
-
+/*app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'jade');*/
 
 app.use(logger('dev'));
 app.use(express.json());
