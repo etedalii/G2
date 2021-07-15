@@ -33,8 +33,7 @@ let User = mongoose.Schema(
         trim: true,
       },
       userType: {
-        type: Number,
-        default: 0,
+        type: Boolean,
         trim: true,
       },
   },

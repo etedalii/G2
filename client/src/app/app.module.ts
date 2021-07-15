@@ -1,24 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './partials/header/header.component';
-import { FooterComponent } from './partials/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
-import { BasePageComponent } from './partials/base-page/base-page.component';
+import { UserRepository } from './model/user.repository';
+import { PageModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    BasePageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
+    PageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

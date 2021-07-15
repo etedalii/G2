@@ -16,18 +16,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li
-          class="nav-item"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <a class="nav-link" aria-current="page" routerLink="/home"
-            ><i class="fas fa-lg fa-home"></i> Home</a
-          >
+        <li class="nav-item"  [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="/users"><i class="fas fa-lg fa-user"></i> User</a>
         </li>
-
-        <li class="navbar-text">
-          <!-- <app-cart-summary></app-cart-summary> -->
+        
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" aria-current="page" routerLink="/home"><i class="fas fa-lg fa-home"></i> Home</a>
         </li>
       </ul>
     </div>
