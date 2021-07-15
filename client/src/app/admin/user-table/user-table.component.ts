@@ -7,7 +7,7 @@ import { UserRepository } from 'src/app/model/user.repository';
   templateUrl: './user-table.component.html',
 })
 export class UserTableComponent implements OnInit {
-  constructor(private router: Router, private repository: UserRepository) {
+  constructor(private repository: UserRepository,private router: Router) {
     console.log('cons run');
   }
 

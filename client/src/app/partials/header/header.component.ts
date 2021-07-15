@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/model/auth.service';
+import { User } from 'src/app/model/user.model';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  user!: User;
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.user = new User();
   }
 
 }

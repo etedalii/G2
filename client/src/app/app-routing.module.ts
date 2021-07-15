@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SurveyFirstGuard } from './guards/surveyFirst.guard';
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
@@ -14,6 +15,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers:[]
+  providers:[SurveyFirstGuard]
 })
 export class AppRoutingModule {}
