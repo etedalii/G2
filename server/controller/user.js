@@ -28,14 +28,54 @@ module.exports.processAddPage = (req, res, next) => {
       email: req.body.email,
       userType: req.body.userType,
   });
-
-  User.register(newUser, req.body.password, (user) => {
+  
+  console.log(newUser);
+  
+  //TODO *************
+  // I should change create with register when add passport and authentication
+  User.create(newUser,(err, user) => {
     if (err) {
       if (err.name === "UserExistsError") {
         req.flash("registerMessage", "Register Error, This User already exist");
       }
     } else {
       return res.json({ success: true, msg: "User Register Successfully" });
+    }
+  });
+};
+
+//This module is responsible for process edit, when call edit with post
+module.exports.processEditUser = (req, res, next) => {
+  let id = req.params.id;
+  let editUser = User({
+    _id: id,
+    name: req.body.name,
+    lastname: req.body.lastname,
+    username: req.body.username,
+    password: req.body.password,
+    email: req.body.email,
+    userType: req.body.userType,
+  });
+
+  User.updateOne({ _id: id }, editUser, (err) => {
+    if (err) {
+      console.log(err);
+      res.end();
+    } else {
+     res.json({success: true, msg: 'Successfuly Edited User', user: editUser});
+    }
+  });
+};
+
+//this module is responsible for delete a user from Db
+module.exports.performDelete = (req, res, next) => {
+  let id = req.params.id;
+  User.deleteOne({ _id: id }, (err) => {
+    if (err) {
+      console.log(err);
+      res.end();
+    } else {
+      res.json({success: true, msg: 'Successfuly Deletedd user'});
     }
   });
 };

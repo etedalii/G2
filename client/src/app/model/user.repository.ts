@@ -13,7 +13,7 @@ export class UserRepository {
   }
 
   getUsers(): User[] {
-    return this.getUsers();
+    return this.users;
   }
 
   getUser(id: number): User {

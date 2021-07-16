@@ -12,5 +12,10 @@ router.get('/add', userController.displayAddPage)
 /* POST Route for processing the Add page - CREATE Operation */
 router.post('/add', userController.processAddPage)
 
+/* POST Route for processing the Edit page - UPDATE Operation */
+router.post("/edit/:id", userController.processEditUser);
+
+// GET to perform  Deletion - DELETE Operation
+router.get("/delete/:id", userController.performDelete);
 
 module.exports = router;

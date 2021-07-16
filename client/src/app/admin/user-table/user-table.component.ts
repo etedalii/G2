@@ -8,13 +8,11 @@ import { UserRepository } from 'src/app/model/user.repository';
 })
 export class UserTableComponent implements OnInit {
   constructor(private repository: UserRepository,private router: Router) {
-    console.log('cons run');
   }
 
   ngOnInit(): void {}
 
   getUsers(): User[] {
-    console.log('get user run');
     return this.repository.getUsers();
   }
 
@@ -33,5 +31,4 @@ export class UserTableComponent implements OnInit {
   editUser(id: number):void{
     this.router.navigateByUrl(`/admin/main/users/edit/${id}`)
   }
-
 }

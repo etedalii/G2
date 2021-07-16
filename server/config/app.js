@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+let cors = require('cors');
 
 // database setup
 let mongoose = require('mongoose');
@@ -23,14 +24,16 @@ const app = express();
 
 // view engine setup
 //This section should be remove after project start
-/*app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'jade');*/
+//app.set('views', path.join(__dirname, '../views'));
+//app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../node_modules')));
+
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
