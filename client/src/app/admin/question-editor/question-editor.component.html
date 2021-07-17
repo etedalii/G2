@@ -1,0 +1,84 @@
+<div
+  class="bg-primary p-2 text-white"
+  [class.bg-warning]="editing"
+  [class.text-dark]="editing"
+>
+  <h5>{{ editing ? "Edit" : "Add" }} Question</h5>
+</div>
+
+<form novalidate #form="ngForm" (ngSubmit)="save(form)">
+  <div class="form-group">
+    <label>Title</label>
+    <input
+      type="text"
+      name="title"
+      class="form-control"
+      [(ngModel)]="question.title"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="checkbox"
+      name="questionType"
+      [(ngModel)]="question.questionType"
+    />
+    <label class="ms-2"> Multiple Answer</label>
+  </div>
+  <div class="form-group mt-2">
+    <input
+      type="checkbox"
+      name="status"
+      [(ngModel)]="question.status"
+    />
+    <label class="ms-2"> Is Enable</label>
+  </div>
+
+  <div class="form-group">
+    <label>Answer 1 </label>
+    <input
+      type="text"
+      name="q1"
+      class="form-control"
+      [(ngModel)]="question.q1"
+    />
+  </div>
+  <div class="form-group">
+    <label>Answer 2 </label>
+    <input
+      type="text"
+      name="q2"
+      class="form-control"
+      [(ngModel)]="question.q2"
+    />
+  </div>
+  <div class="form-group">
+    <label>Answer 3 </label>
+    <input
+      type="text"
+      name="q3"
+      class="form-control"
+      [(ngModel)]="question.q3"
+    />
+  </div>
+  <div class="form-group">
+    <label>Answer 4 </label>
+    <input
+      type="text"
+      name="q4"
+      class="form-control"
+      [(ngModel)]="question.q4"
+    />
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary m-2"
+    [class.btn-warning]="editing"
+  >
+    <i class="{{ editing ? 'fas fa-save' : 'fas fa-plus-circle' }}"></i>
+    {{ editing ? "Save" : "Add" }}
+  </button>
+
+  <button class="btn btn-secondary" type="reset" routerLink='/admin/main/questions'>
+      <i class="fas fa-undo"></i> Cancel</button>
+</form>

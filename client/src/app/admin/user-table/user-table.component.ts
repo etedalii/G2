@@ -7,7 +7,7 @@ import { UserRepository } from 'src/app/model/user.repository';
   templateUrl: './user-table.component.html',
 })
 export class UserTableComponent implements OnInit {
-  constructor(private repository: UserRepository,private router: Router) {
+  constructor(private repository: UserRepository, private router: Router) {
   }
 
   ngOnInit(): void {}

@@ -1,0 +1,37 @@
+<table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>QuestionType</th>
+        <th>UserCreator</th>
+        <th>Publishe</th>
+        <th>Status</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let b of getQuestions()">
+        <td>{{ b.title }}</td>
+        <td>{{ b.questionType === true ? "Multiple Answer" : "Single Answer" }}</td>
+        <td>{{ b.userCreator }}</td>
+        <td>{{ b.publish }}</td>
+        <td>{{ b.status  === true ? "Enable" : "Disable" }}</td>
+        <td>
+          <button
+            (click)='editQuestion(b._id)'
+            class="btn btn-sm btn-primary m-1"
+          >
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+          <button class="btn btn-sm btn-danger m-1" (click)="deleteQuestion(b._id)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr> 
+    </tbody>
+  </table>
+  
+   <button class="btn btn-primary" (click)='addQuestion()'>
+    <i class="fas fa-plus-circle"></i> Add New Question
+  </button> 
+  

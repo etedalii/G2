@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Question } from './question.model';
 const POROTOCOL = 'http';
 const PORT = 3000;
 
@@ -50,4 +51,28 @@ export class RestDataSource {
   }
 
   //*********************End USER SECTION *************************** */
+
+  // ************************Question Section *************************
+
+  getQuestions(): Observable<Question[]> {
+    return this.http.get<Question[]>(this.baseUrl + 'questions');
+  }
+
+  saveQuestion(question: Question): Observable<Question> {
+    return this.http.post<Question>(this.baseUrl + 'questions/add', question);
+  }
+
+  updateQuestion(entity: Question): Observable<Question> {
+    return this.http.post<Question>(
+      `${this.baseUrl}questions/edit/${entity._id}`,
+      entity
+    );
+  }
+
+  deleteQuestion(id: number): Observable<Question> {
+    return this.http.get<Question>(`${this.baseUrl}questions/delete/${id}`);
+  }
+
+  //*********************End Question SECTION *************************** */
+
 }

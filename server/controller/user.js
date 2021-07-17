@@ -29,8 +29,6 @@ module.exports.processAddPage = (req, res, next) => {
       userType: req.body.userType,
   });
   
-  console.log(newUser);
-  
   //TODO *************
   // I should change create with register when add passport and authentication
   User.create(newUser,(err, user) => {
