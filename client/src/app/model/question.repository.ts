@@ -10,13 +10,15 @@ export class QuestionRepository {
 
   constructor(private dataSource: RestDataSource) {}
 
-  loadQuestions () : void{
+  loadQuestions(): void {
     this.loaded = true;
-    this.dataSource.getQuestions().subscribe(question => this.questions = question);
+    this.dataSource.getQuestions().subscribe((question) => {
+      this.questions = question;
+    });
   }
 
   getQuestions(): Question[] {
-    if(!this.loaded){
+    if (!this.loaded) {
       this.loadQuestions();
     }
     return this.questions;
@@ -26,19 +28,26 @@ export class QuestionRepository {
     return this.questions.find((p) => p._id === id) as Question;
   }
 
-  saveQuestion(entity: Question): Observable<Question> {
-    return this.dataSource.saveQuestion(entity);
+  saveQuestion(question: Question): Observable<Question> {
+    return this.dataSource.saveQuestion(question);
   }
 
-  updateQuestion(entity: Question): void {
-    this.dataSource.updateQuestion(entity).subscribe(question => {
-      this.questions.splice(this.questions.findIndex(o => o._id == question._id), 1, question);
+  updateQuestion(question: Question): void {
+    this.dataSource.updateQuestion(question).subscribe((question) => {
+      this.questions.splice(
+        this.questions.findIndex((o) => o._id == question._id),
+        1,
+        question
+      );
     });
   }
 
-  deleteQuestion(id : number): void{
-    this.dataSource.deleteQuestion(id).subscribe(order => {
-      this.questions.splice(this.questions.findIndex(o => id === o._id), 1)
-    })
+  deleteQuestion(id: number): void {
+    this.dataSource.deleteQuestion(id).subscribe((order) => {
+      this.questions.splice(
+        this.questions.findIndex((o) => id === o._id),
+        1
+      );
+    });
   }
 }

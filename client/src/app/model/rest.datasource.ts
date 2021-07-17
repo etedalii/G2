@@ -32,22 +32,19 @@ export class RestDataSource {
   }
 
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(
-      this.baseUrl + 'users/add',
-      user
-    );
+    return this.http.post<User>(this.baseUrl + 'users/add', user);
     //TODO
     //,this.httpOptions
   }
 
   updateUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.baseUrl}users/edit/${user._id}`,user);
+    return this.http.post<User>(`${this.baseUrl}users/edit/${user._id}`, user);
     //TODO
     //,this.httpOptions
   }
 
   deleteUser(id: Number): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}users/delete/${id}`);//TODO//,this.httpOptions
+    return this.http.get<User>(`${this.baseUrl}users/delete/${id}`); //TODO//,this.httpOptions
   }
 
   //*********************End USER SECTION *************************** */
@@ -74,5 +71,4 @@ export class RestDataSource {
   }
 
   //*********************End Question SECTION *************************** */
-
 }
