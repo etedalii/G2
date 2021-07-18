@@ -3,7 +3,7 @@ export class Question {
     public title?: string;
     public questionType?: boolean;// False for single answer, True for multiple answer
     public userCreator?: string;
-    public publish?: Date;
+    public publish?: String;
     public status?: Boolean;
     
     public q1!: string;

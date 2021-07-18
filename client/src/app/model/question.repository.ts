@@ -28,18 +28,25 @@ export class QuestionRepository {
     return this.questions.find((p) => p._id === id) as Question;
   }
 
-  saveQuestion(question: Question): Observable<Question> {
-    return this.dataSource.saveQuestion(question);
-  }
-
-  updateQuestion(question: Question): void {
-    this.dataSource.updateQuestion(question).subscribe((question) => {
-      this.questions.splice(
-        this.questions.findIndex((o) => o._id == question._id),
-        1,
-        question
-      );
-    });
+  saveQuestion(question: Question): void{
+    //return this.dataSource.saveQuestion(question);
+    if (
+      question._id === null ||
+      question._id === 0 ||
+      question._id === undefined
+    ) {
+      this.dataSource.addQuestion(question).subscribe((u) => {
+        this.questions.push(question);
+      });
+    } else {
+      this.dataSource.updateQuestion(question).subscribe((q) => {
+        this.questions.splice(
+          this.questions.findIndex((u) => u._id === question._id),
+          1,
+          question
+        );
+      });
+    }
   }
 
   deleteQuestion(id: number): void {

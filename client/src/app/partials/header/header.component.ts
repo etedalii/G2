@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/model/auth.service';
+import { Question } from 'src/app/model/question.model';
 import { User } from 'src/app/model/user.model';
 
 @Component({
@@ -10,10 +11,12 @@ import { User } from 'src/app/model/user.model';
 })
 export class HeaderComponent implements OnInit {
   user!: User;
+  question! : Question;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.user = new User();
+    this.question = new Question();
   }
 
 }

@@ -21,9 +21,9 @@ const routing = RouterModule.forChild([
       {path: 'users/:mode', component: UserEditorComponent, data: {title: 'Add User'},canActivate: [AuthGuard]},
       {path: 'users', component: UserTableComponent, data: {title: 'User List'} ,canActivate: [AuthGuard]},
       
-      {path: 'questions/:mode/:id', component: QuestionEditorComponent, data: {title: 'Edit Question'},canActivate: [AuthGuard] },
-      {path: 'questions/:mode', component: QuestionEditorComponent, data: {title: 'Add Question'},canActivate: [AuthGuard]},
-      {path: 'questions', component: QuestionTableComponent, data: {title: 'Question List'} ,canActivate: [AuthGuard]},
+      {path: 'question/:mode/:id', component: QuestionEditorComponent, data: {title: 'Edit Question'},canActivate: [AuthGuard] },
+      {path: 'question/:mode', component: QuestionEditorComponent, data: {title: 'Add Question'},canActivate: [AuthGuard]},
+      {path: 'question', component: QuestionTableComponent, data: {title: 'Question List'} ,canActivate: [AuthGuard]},
 
       { path: '**', redirectTo: 'home' },
     ],

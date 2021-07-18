@@ -55,15 +55,16 @@ export class RestDataSource {
     return this.http.get<Question[]>(this.baseUrl + 'questions');
   }
 
-  saveQuestion(question: Question): Observable<Question> {
+  addQuestion(question: Question): Observable<User> {
     return this.http.post<Question>(this.baseUrl + 'questions/add', question);
+    //TODO
+    //,this.httpOptions
   }
 
-  updateQuestion(entity: Question): Observable<Question> {
-    return this.http.post<Question>(
-      `${this.baseUrl}questions/edit/${entity._id}`,
-      entity
-    );
+  updateQuestion(question: Question): Observable<User> {
+    return this.http.post<Question>(`${this.baseUrl}questions/edit/${question._id}`, question);
+    //TODO
+    //,this.httpOptions
   }
 
   deleteQuestion(id: number): Observable<Question> {

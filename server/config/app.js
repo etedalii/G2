@@ -19,7 +19,7 @@ mongoDB.once('open', ()=>{
 
 const indexRouter = require('../routes/index');
 const usersRouter = require('../routes/users');
-const questionRouter = require('../routes/question');
+const questionsRouter = require('../routes/questions');
 const app = express();
 
 
@@ -33,7 +33,7 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/questions', questionRouter);
+app.use('/questions', questionsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

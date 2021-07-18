@@ -21,15 +21,15 @@ export class QuestionTableComponent implements OnInit {
     if (confirm('Are you sure?') && (id !== undefined)) {
       this.repository.deleteQuestion(id);
     } else {
-      this.router.navigateByUrl('/admin/main/questions');
+      this.router.navigateByUrl('/admin/main/question');
     }
   }
 
   addQuestion():void{
-    this.router.navigateByUrl('/admin/main/questions/add')
+    this.router.navigateByUrl('/admin/main/question/add')
   }
 
   editQuestion(id: number):void{
-    this.router.navigateByUrl(`/admin/main/questions/edit/${id}`)
+    this.router.navigateByUrl(`/admin/main/question/edit/${id}`)
   }
 }

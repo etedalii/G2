@@ -6,7 +6,7 @@ let Question = mongoose.Schema(
     title: String,
     qestionType: Boolean, // False for single answer, True for multiple answer
     userCreator: String,
-    publish: Date,
+    publish: String,
     status: Boolean,
     q1: String,
     q2: String,

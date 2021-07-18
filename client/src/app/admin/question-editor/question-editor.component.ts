@@ -30,6 +30,6 @@ export class QuestionEditorComponent implements OnInit {
 
   save(form: NgForm):void{
     this.repository.saveQuestion(this.question);
-    this.router.navigateByUrl('/admin/main/questions')
+    this.router.navigateByUrl('/admin/main/question')
   }
 }
