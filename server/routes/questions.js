@@ -7,7 +7,7 @@ let questionCtrl = require("../controller/question");
 router.get("/", questionCtrl.displayQuestionList);
 
 /* GET Route for display the Add page - CREATE Operation */
-//router.get('/add', questionController.displayAddPage);
+router.get('/add', questionCtrl.displayAddPage);
 
 /* POST route for proccessing the add page  */
 router.post('/add', questionCtrl.processQuestionAdd);

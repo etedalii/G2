@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Question } from './question.model';
 import { RestDataSource } from './rest.datasource';
 
@@ -25,11 +24,14 @@ export class QuestionRepository {
   }
 
   getQuestion(id: number): Question {
-    return this.questions.find((p) => p._id === id) as Question;
+    let q = this.questions.find((p) => p._id === id) as Question;
+    console.log(q);
+    return q;
   }
 
   saveQuestion(question: Question): void{
-    //return this.dataSource.saveQuestion(question);
+    //TODO - Change here after authentication
+    question.userCreator = "Default User";
     if (
       question._id === null ||
       question._id === 0 ||

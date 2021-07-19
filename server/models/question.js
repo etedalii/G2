@@ -4,7 +4,7 @@ let mongoose = require("mongoose");
 let Question = mongoose.Schema(
   {
     title: String,
-    qestionType: Boolean, // False for single answer, True for multiple answer
+    questionType: Boolean, // False for single answer, True for multiple answer
     userCreator: String,
     publish: String,
     status: Boolean,

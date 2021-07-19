@@ -1,14 +1,9 @@
 'use strict'
 
 class Options {
-    constructor(_id= "", name = ""){
-        this._id = _id;
+    constructor(name = ""){
+        //this._id = _id;
         this.name = name;
-    }
-
-    toString(){
-        return "_id     :"+ this._id + "\n" +
-                "name   :" + this.name +"\n";
     }
 }
 
