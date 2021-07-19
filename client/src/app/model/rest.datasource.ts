@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user.model';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Question } from './question.model';
 const POROTOCOL = 'http';
 const PORT = 3000;
