@@ -66,35 +66,26 @@ module.exports.processLoginPage = (req, res, next) => {
 };
 
 module.exports.processRegisterPage = (req, res, next) => {
-  console.log(req.body);
+  let newUser = new User({
+    name: req.body.name,
+    lastname: req.body.lastname,
+    username: req.body.username,
+    password: req.body.password,
+    email: req.body.email,
+    userType: false, // because I want to be sure create staundard user
+ });
 
-  let newregister = new User({
-    //name: req.body.name,
-     lastname: req.body.lastname,
-    // username: req.body.username,
-    // password: req.body.password,
-    // email: req.body.email,
-    // userType: req.body.userType,
+  User.register(newUser, req.body.password, (user, err) => {
+    if (err) {
+       console.log("Error, Inserting a new User");
+       if (err.name === "UserExistsError") {
+         return res.json({ success: false, msg: "Register Error, User Already exist" });
+       }
+      return next(err);
+    } else {
+      return res.json({ success: true, msg: "User Register Successfully" });
+    }
   });
-  console.log("user object create");
-  //console.log(newUser);
-  return res.json({ success: true, msg: "User Register Successfully" });
-  // User.register(newUser, req.body.password, (user) => {
-  //   if (err) {
-  //     // console.log("Error, Inserting a new User");
-  //     // if (err.name === "UserExistsError") {
-  //     //   req.flash("registerMessage", "Register Error, User Already exist");
-  //     // }
-  //     // return res.render("auth/register", {
-  //     //   title: "register",
-  //     //   messages: req.flash("registerMessage"),
-  //     //   email: req.user ? req.user.email : "",
-  //     // });
-  //     return next(err);
-  //   } else {
-  //     return res.json({ success: true, msg: "User Register Successfully" });
-  //   }
-  // });
 };
 
 module.exports.performLogout = (req, res, next) => {

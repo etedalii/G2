@@ -50,4 +50,5 @@ let options = ({
 
 User.plugin(passportLocalMongoose, options);
 
+module.exports = mongoose.model('User', User);
 module.exports.User = mongoose.model('User', User);
