@@ -7,6 +7,11 @@ import { AppComponent } from './app.component';
 import { ModelModule } from './model/model.module';
 import { PageModule } from './pages/pages.module';
 
+import { JwtModule, JwtHelperService, JwtInterceptor } from '@auth0/angular-jwt';
+export function jwtTokenGetter(): string {
+  return localStorage.getItem('id_token') || '';
+}
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -16,6 +21,13 @@ import { PageModule } from './pages/pages.module';
     PageModule,
     ModelModule,
     FormsModule,
+    
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: jwtTokenGetter
+      }
+    })
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

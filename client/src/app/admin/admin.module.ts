@@ -9,9 +9,11 @@ import { UserEditorComponent } from "./user-editor/user-editor.component";
 import { UserTableComponent } from "./user-table/user-table.component";
 import { QuestionTableComponent } from './question-table/question-table.component';
 import { QuestionEditorComponent } from './question-editor/question-editor.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routing = RouterModule.forChild([
   {path: 'auth' , component: AuthComponent },
+  {path: 'signup', component: SignupComponent, data: {title: 'Create an Account'}},
   {
     path: 'main',
     component: AdminComponent,
@@ -24,7 +26,6 @@ const routing = RouterModule.forChild([
       {path: 'question/:mode/:id', component: QuestionEditorComponent, data: {title: 'Edit Question'},canActivate: [AuthGuard] },
       {path: 'question/:mode', component: QuestionEditorComponent, data: {title: 'Add Question'},canActivate: [AuthGuard]},
       {path: 'question', component: QuestionTableComponent, data: {title: 'Question List'} ,canActivate: [AuthGuard]},
-
       { path: '**', redirectTo: 'home' },
     ],
   },
@@ -34,7 +35,7 @@ const routing = RouterModule.forChild([
 @NgModule({
     imports: [CommonModule, FormsModule , routing],
     providers: [AuthGuard],
-    declarations:[AuthComponent, AdminComponent, UserEditorComponent, UserTableComponent, QuestionTableComponent, QuestionEditorComponent]
+    declarations:[AuthComponent, AdminComponent, UserEditorComponent, UserTableComponent, QuestionTableComponent, QuestionEditorComponent, SignupComponent]
 })
 
 export class AdminModule {}

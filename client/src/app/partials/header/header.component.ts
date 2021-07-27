@@ -12,10 +12,26 @@ import { User } from 'src/app/model/user.model';
 export class HeaderComponent implements OnInit {
   user!: User;
   question! : Question;
+  
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.user = new User();
     this.question = new Question();
+  }
+
+  onLogoutClick():void{
+    this.authService.logout().subscribe(data => {
+      this.router.navigate(['/login']);
+    })
+  }
+
+  isLoggedIn(): boolean {
+    const result = this.authService.authenticated;
+    if(result){
+      this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    }
+
+    return result;
   }
 }

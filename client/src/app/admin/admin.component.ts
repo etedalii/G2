@@ -7,4 +7,9 @@ import { AuthService } from '../model/auth.service';
 })
 export class AdminComponent {
   constructor(private auth: AuthService, private router: Router) {}
+
+  logout(): void {
+    this.auth.logout();
+    this.router.navigateByUrl('/');
+  }
 }
