@@ -14,7 +14,7 @@
         <h1>Enter you information to register</h1>
         <form autocomplete="off" #form="ngForm" (ngSubmit)="signup(form)">
             <fieldset class="form-group mt-2">
-                <label for="name"> Geven Name:</label>
+                <label for="name"> Given Name:</label>
                 <input
                   type="text"
                   class="form-control mt-2"
@@ -88,7 +88,7 @@
             <button class="btn btn-primary m-1" type="submit">
               <i class="fas fa-save"></i> Register
             </button>
-            <button class="btn btn-secondary m-1" routerLink="/admin/auth">
+            <button class="btn btn-secondary m-1" routerLink="/home">
               <i class="fas fa-undo"> Cancel</i>
             </button>
           </fieldset>
