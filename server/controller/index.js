@@ -74,16 +74,16 @@ module.exports.processRegisterPage = (req, res, next) => {
     email: req.body.email,
     userType: false, // because I want to be sure create staundard user
  });
-
-  User.register(newUser, req.body.password, (user, err) => {
+    
+  User.register(newUser, req.body.password, (err) => {
     if (err) {
        console.log("Error, Inserting a new User");
        if (err.name === "UserExistsError") {
-         return res.json({ success: false, msg: "Register Error, User Already exist" });
+        return res.json({ success: false, msg: "Register Error, User Already exist" });
        }
       return next(err);
     } else {
-      return res.json({ success: true, msg: "User Register Successfully" });
+       return res.json({ success: true, msg: "User Register Successfully" });
     }
   });
 };
