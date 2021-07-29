@@ -73,7 +73,7 @@
           <fieldset class="form-group mt-2">
             <label for="email"> Email:</label>
             <input
-              type="text"
+              type="email"
               class="form-control mt-2"
               [(ngModel)]="user.email"
               name="email"
@@ -88,7 +88,7 @@
             <button class="btn btn-primary m-1" type="submit">
               <i class="fas fa-save"></i> Register
             </button>
-            <button class="btn btn-secondary m-1" routerLink="/home">
+            <button class="btn btn-secondary m-1" routerLink="/admin/auth">
               <i class="fas fa-undo"> Cancel</i>
             </button>
           </fieldset>

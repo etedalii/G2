@@ -36,7 +36,6 @@ module.exports.processLoginPage = (req, res, next) => {
     //Now user can login
     req.login(user, (err) => {
       //check is there server error
-
       if (err) {
         return next(err);
       }
@@ -49,7 +48,6 @@ module.exports.processLoginPage = (req, res, next) => {
       };
 
       const authToken = jwt.sign(payload, DB.Secret, { expiresIn: "1d" });
-
       return res.json({
         success: true,
         msg: "User logged in Successfully",
@@ -57,6 +55,9 @@ module.exports.processLoginPage = (req, res, next) => {
           id: user._id,
           displayName: user.displayName,
           username: user.username,
+          userType: user.userType,
+          name: user.name,
+          lastname: user.lastname,
           email: user.email,
         },
         token: authToken,
@@ -90,7 +91,5 @@ module.exports.processRegisterPage = (req, res, next) => {
 
 module.exports.performLogout = (req, res, next) => {
   req.logout();
-  //res.redirect("/");
-
   res.json({ success: true, msg: "User Successfully Logged out" });
 };

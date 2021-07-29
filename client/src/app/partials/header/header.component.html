@@ -17,19 +17,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         
-        <li *ngIf='isLoggedIn()' class="nav-item"  [routerLinkActive]="['active']">
+        <!-- <li *ngIf='isLoggedIn()' class="nav-item"  [routerLinkActive]="['active']">
           <a class="nav-link" routerLink="/question"><i class="fas fa-lg fa-user"></i> Question</a>
         </li>
 
         <li *ngIf='isLoggedIn()' class="nav-item"  [routerLinkActive]="['active']">
           <a class="nav-link" routerLink="/users"><i class="fas fa-lg fa-user"></i> User</a>
-        </li>
+        </li> -->
         
         <li *ngIf='isLoggedIn()' class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" aria-current="page" routerLink="/home"><i class="fas fa-lg fa-home"></i> Home</a>
         </li>
 
-        <li *ngIf='isLoggedIn()' class="nav-item ml-5" [routerLinkActive]="['active']">
+        <li *ngIf='isLoggedIn() && isAdmin()' class="nav-item ml-5" [routerLinkActive]="['active']">
           <a class="nav-link text-warning" routerLink="/admin/main"><i class="fas fa-lg fa-user-shield"></i> Admin</a>
         </li>
 
