@@ -29,7 +29,7 @@ export class AuthComponent implements OnInit {
         }
       });
     } else {
-      this.errorMessage = 'Form Data invalid';
+      this.errorMessage = 'Please check your ID or Password';
     }
   }
 }
