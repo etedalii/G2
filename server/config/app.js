@@ -5,6 +5,19 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 let cors = require('cors');
 
+//*************Authentication Section ****************** */
+let session = require("express-session");
+let passport = require("passport");
+
+let passportJWT = require('passport-jwt');
+let JWTStrategy = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
+
+let passportlocal = require("passport-local");
+let localStategy = passportlocal.Strategy;
+let flash = require("connect-flash");
+//************************************************ */
+
 // database setup
 let mongoose = require('mongoose');
 let DB = require('./db');
@@ -22,6 +35,22 @@ const usersRouter = require('../routes/users');
 const questionsRouter = require('../routes/questions');
 const app = express();
 
+//*******************Setup express session */
+app.use(
+  session({
+    secret: "SomeSceret",
+    saveUninitialized: false,
+    resave: false,
+  })
+);
+
+// ***********Initialize flash
+app.use(flash());
+
+//********** Initialize passport */
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -31,6 +60,41 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 app.use(cors());
 
+// ******** Passport user configuation ************/
+//create a user model instance
+let userModel = require("../models/user");
+let User = userModel.User;
+
+//Implement a user authentication stategy
+
+//Serialize and Deserialize user info
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+passport.use(User.createStrategy())
+
+
+// For JWT ----------------------------------------
+
+let jwtOptions = {};
+//check that logged in or not
+jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = DB.Secret;
+
+let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
+  User.findById(jwt_payload.id)
+  .then(user => {
+    return done(null,user);
+  })
+  .catch(err => {
+    return done(err, false)
+  })
+});
+
+passport.use(strategy);
+
+//-----------------END JWT
+
+// routing
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/questions', questionsRouter);

@@ -28,16 +28,16 @@ module.exports.processAddPage = (req, res, next) => {
       email: req.body.email,
       userType: req.body.userType,
   });
-  
-  //TODO *************
-  // I should change create with register when add passport and authentication
-  User.create(newUser,(err, user) => {
+
+  User.register(newUser, req.body.password, (err) => {
     if (err) {
-      if (err.name === "UserExistsError") {
-        req.flash("registerMessage", "Register Error, This User already exist");
-      }
+       console.log("Error, Inserting a new User");
+       if (err.name === "UserExistsError") {
+        return res.json({ success: false, msg: "Register Error, User Already exist" });
+       }
+      return next(err);
     } else {
-      return res.json({ success: true, msg: "User Register Successfully" });
+       return res.json({ success: true, msg: "User Register Successfully" });
     }
   });
 };

@@ -48,4 +48,14 @@ export class UserRepository {
       );
     });
   }
+
+  signup(saveUser: User) : void {
+    console.log('saveUser');
+    console.log(saveUser);
+    //saveUser.userType = false;
+
+    this.dataSource.signup(saveUser).subscribe((u) => {
+      this.users.push(saveUser);
+    });
+  }
 }

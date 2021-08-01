@@ -7,5 +7,5 @@
  */
 module.exports = {
     "URI" : 'mongodb://localhost/survey_db',
-   // "Secret" :"SurveySecret",
+    "Secret" :"SurveySecret",
 }
