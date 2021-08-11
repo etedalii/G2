@@ -1,23 +1,22 @@
-details {
-    user-select: none;
-  }
-  
-  details>summary span.icon {
-    width: 24px;
-    height: 24px;
-    transition: all 0.3s;
-    margin: auto;
-  }
-  
-  details[open] summary span.icon {
-    transform: rotate(180deg);
-  }
-  
-  summary {
-    display: flex;
-    cursor: pointer;
-  }
-  
-  summary::-webkit-details-marker {
-    display: none;
-  }
+#outside {
+  background-color: #172B37;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+form {
+  margin: 0 auto;
+  width: 90%;
+  /* To see the limits of the form */
+  padding: 1em;
+  border-radius: 1em;
+}
+
+#survey-form {
+  background-color: whitesmoke;
+}
+
+fieldset { 
+  border:1px solid lightgray;
+  margin: 10px;
+}
