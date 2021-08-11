@@ -95,9 +95,10 @@ passport.use(strategy);
 //-----------------END JWT
 
 // routing
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/questions', questionsRouter);
+//add api for upload to cloud
+app.use('/api', indexRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/questions', questionsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

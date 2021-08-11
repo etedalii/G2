@@ -24,7 +24,7 @@ export class RestDataSource {
 
   constructor(private http: HttpClient, private jwtService: JwtHelperService) {
     this.user = new User();
-    this.baseUrl = `${POROTOCOL}://${location.hostname}:${PORT}/`;
+    this.baseUrl = `${POROTOCOL}://${location.hostname}:${PORT}/api/`;
   }
 
   // ***************** User Section  ***************************
