@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/model/auth.service';
 import { BasePageComponent } from 'src/app/partials/base-page/base-page.component';
+
+
+
 
 @Component({
   selector: 'app-home',
