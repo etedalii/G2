@@ -19,6 +19,11 @@ export class RestDataSource {
       'Access-Control-Allow-Origion': '*',
       'Access-Control-Allow-Headers':
         'Origin, X-Requested-With, Content-Type, Accept',
+
+        'X-Frame-Options': 'Deny',
+        'X-XSS-Protection': '1',
+        'X-Content-Type-Options': 'nosniff',
+        'cache-control':'max-age=3153600'
     }),
   };
 
