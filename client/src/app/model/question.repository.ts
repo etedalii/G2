@@ -23,6 +23,13 @@ export class QuestionRepository {
     return this.questions;
   }
 
+  getActiveQuestions(): Question[] {
+    if (!this.loaded) {
+      this.loadQuestions();
+    }
+    return this.questions.filter(x => x.status == true);
+  }
+
   getQuestion(id: number): Question {
     let q = this.questions.find((p) => p._id === id) as Question;
     console.log(q);

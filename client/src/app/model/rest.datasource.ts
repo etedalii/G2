@@ -19,12 +19,18 @@ export class RestDataSource {
       'Access-Control-Allow-Origion': '*',
       'Access-Control-Allow-Headers':
         'Origin, X-Requested-With, Content-Type, Accept',
+
+        'X-Frame-Options': 'Deny',
+        'X-XSS-Protection': '1',
+        'X-Content-Type-Options': 'nosniff',
+        'cache-control':'max-age=3153600'
     }),
   };
 
   constructor(private http: HttpClient, private jwtService: JwtHelperService) {
     this.user = new User();
-    this.baseUrl = `${POROTOCOL}://${location.hostname}:${PORT}/`;
+    //this.baseUrl = `${POROTOCOL}://${location.hostname}:${PORT}/api/`;
+    this.baseUrl = 'https://comp229-g2-s2021.herokuapp.com/api/';
   }
 
   // ***************** User Section  ***************************
