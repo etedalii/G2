@@ -29,11 +29,9 @@ export class AuthComponent implements OnInit {
         }
       });
     } else {
-<<<<<<< HEAD
+
       this.errorMessage = 'Form Data invalid.';
-=======
-      this.errorMessage = 'Form Data invalid';
->>>>>>> c93901dd178c8b4e84f3ecab38a4d3a814cdc89d
+
     }
   }
 }
